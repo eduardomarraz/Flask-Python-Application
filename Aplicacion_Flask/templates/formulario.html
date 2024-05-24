@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Salario</title>
+</head>
+<body>
+    <h1>Calculadora de Salario</h1>
+    <form action="/calcular" method="post">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        <label for="edad">Edad:</label><br>
+        <input type="number" id="edad" name="edad"><br>
+        <label for="salario_base">Salario Base:</label><br>
+        <input type="number" id="salario_base" name="salario_base"><br>
+        <label for="tipo_empleado">Tipo de Empleado:</label><br>
+        <select id="tipo_empleado" name="tipo_empleado">
+            <option value="empleado">Empleado</option>
+            <option value="gerente">Gerente</option>
+        </select><br>
+        <label for="bono">Bono (solo para gerentes):</label><br>
+        <input type="number" id="bono" name="bono" step="any" disabled><br>
+        <input type="submit" value="Calcular">
+    </form>
+    <script>
+        document.getElementById('tipo_empleado').addEventListener('change', function() {
+            var bonoInput = document.getElementById('bono');
+            if (this.value === 'gerente') {
+                bonoInput.disabled = false;
+            } else {
+                bonoInput.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
+
